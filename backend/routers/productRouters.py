@@ -1,9 +1,9 @@
 from typing import List
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
-from backend.conn.connDatabase import get_db
-from backend.views.productView import ProductResponse, ProductCreate, ProductUpdate
-from backend.controllers.productController import get_all_products, get_product, create_product, update_product, delete_product
+from conn.connDatabase import get_db
+from views.productView import ProductResponse, ProductCreate, ProductUpdate
+from controllers.productController import get_all_products, get_product, create_product, update_product, delete_product
 
 prod_router = APIRouter()
 
@@ -16,7 +16,7 @@ def get_all_products_route(db: Session = Depends(get_db)):
 
     return products
 
-@prod_router.get()
+@prod_router.get("/products/{product_id}", response_model=ProductResponse)
 def get_product_route(product_id: int, db: Session = Depends(get_db)):
     """
     Essa é a rota que retorna um produto do banco de dados, pertencente a tabela Products, filtrado pelo ID.

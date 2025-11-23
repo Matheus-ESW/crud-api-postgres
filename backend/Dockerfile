@@ -1,7 +1,7 @@
 # Dockerfile-backend
 
 # Imagem base
-FROM python:3.12.1
+FROM python:3.9
 
 # Definir o diretório de trabalho no container
 WORKDIR /app

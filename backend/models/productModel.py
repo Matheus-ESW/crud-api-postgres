@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Float, DateTime
 from sqlalchemy.sql import func
-from backend.conn.connDatabase import Base
+from conn.connDatabase import Base
 
 class ProductModel(Base):
     __tablename__ = "products"
