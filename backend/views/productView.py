@@ -1,5 +1,5 @@
 import datetime
-from pydantic import BaseModel, PositiveFloat, EmailStr
+from pydantic import BaseModel, PositiveFloat, EmailStr, validator, Field
 from typing import Optional
 
 class ProductBase(BaseModel):
