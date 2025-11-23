@@ -45,14 +45,15 @@ with st.expander("Adicionar um Novo Produto"):
             response = requests.post(
                 "http://backend:8000/products/",
                 json={
-                    "name": name,
-                    "description": description,
-                    "price": price,
-                    "categoria": categoria,
-                    "email_fornecedor": email_fornecedor,
+                    "prod_base_name": name,
+                    "prod_base_description": description,
+                    "prod_base_price": price,
+                    "prod_base_category": categoria,
+                    "prod_base_email_forn": email_fornecedor,
                 },
             )
             show_response_message(response)
+            
 # Visualizar Produtos
 with st.expander("Visualizar Produtos"):
     if st.button("Exibir Todos os Produtos"):
@@ -63,13 +64,13 @@ with st.expander("Visualizar Produtos"):
 
             df = df[
                 [
-                    "id",
-                    "name",
-                    "description",
-                    "price",
-                    "categoria",
-                    "email_fornecedor",
-                    "created_at",
+                    "prod_base_id",
+                    "prod_base_name",
+                    "prod_base_description",
+                    "prod_base_price",
+                    "prod_base_category",
+                    "prod_base_email_forn",
+                    "prod_base_created_at",
                 ]
             ]
 
@@ -89,13 +90,13 @@ with st.expander("Obter Detalhes de um Produto"):
 
             df = df[
                 [
-                    "id",
-                    "name",
-                    "description",
-                    "price",
-                    "categoria",
-                    "email_fornecedor",
-                    "created_at",
+                    "prod_base_id",
+                    "prod_base_name",
+                    "prod_base_description",
+                    "prod_base_price",
+                    "prod_base_category",
+                    "prod_base_email_forn",
+                    "prod_base_created_at",
                 ]
             ]
 
@@ -126,22 +127,22 @@ with st.expander("Atualizar Produto"):
             "Nova Categoria",
             ["Eletrônico", "Eletrodoméstico", "Móveis", "Roupas", "Calçados"],
         )
-        new_email = st.text_input("Novo Email do Fornecedor")
+        new_email = st.text_input("Novo E-mail do Fornecedor")
 
         update_button = st.form_submit_button("Atualizar Produto")
 
         if update_button:
             update_data = {}
             if new_name:
-                update_data["name"] = new_name
+                update_data["prod_base_name"] = new_name
             if new_description:
-                update_data["description"] = new_description
+                update_data["prod_base_description"] = new_description
             if new_price > 0:
-                update_data["price"] = new_price
-            if new_email:
-                update_data["email_fornecedor"] = new_email
+                update_data["prod_base_price"] = new_price
             if new_categoria:
-                update_data["categoria"] = new_categoria
+                update_data["prod_base_category"] = new_categoria
+            if new_email:
+                update_data["prod_base_email_forn"] = new_email
 
             if update_data:
                 response = requests.put(

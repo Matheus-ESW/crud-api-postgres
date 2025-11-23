@@ -25,7 +25,7 @@ def create_product(db: Session, product: ProductCreate):
     
     return db_product
 
-def update_product(db: Session, product_id: int, product: ProductUpdate):
+def update_product(product_id: int, product: ProductUpdate, db: Session):
     """
     Essa função atualiza algum atributo de um produto da tabela Products, filtrando pelo ID.
     """
@@ -45,10 +45,10 @@ def update_product(db: Session, product_id: int, product: ProductUpdate):
     if product.prod_base_email_forn is not None:
         db_product.prod_base_email_forn = product.prod_base_email_forn
 
-    db.commit
+    db.commit()
     return db_product
 
-def delete_product(db: Session, product_id: int):
+def delete_product(product_id: int, db: Session):
     """
     Essa função remove algum produto da tabela Products, filtrando pelo ID.
     """

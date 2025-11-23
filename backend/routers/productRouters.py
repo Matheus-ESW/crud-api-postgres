@@ -47,13 +47,13 @@ def update_product_route(product_id: int, product: ProductUpdate, db: Session = 
     return db_product
 
 @prod_router.delete("/products/{product_id}", response_model=ProductResponse)
-def detele_product_route(product_id: int, db: Session = Depends(get_db)):
+def delete_product_route(product_id: int, db: Session = Depends(get_db)):
     """
     Essa é a rota que deleta um produto do banco de dados, pertencente a tabela Products, filtrado pelo ID.
     """
     db_product = delete_product(product_id=product_id, db=db)
 
     if db_product is None:
-        raise HTTPException(status_code=404, detail="Product not found")
+        raise HTTPException(status_code=404, detail="Produto não encontrado!!")
     
     return db_product
