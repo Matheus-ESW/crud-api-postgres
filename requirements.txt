@@ -1,0 +1,9 @@
+fastapi
+fastapi[standard]
+streamlit
+sqlalchemy
+requests
+pydantic
+pydantic[email]
+plotly
+psycopg2-binary
