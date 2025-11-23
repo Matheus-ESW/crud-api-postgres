@@ -19,7 +19,7 @@ def create_product(db: Session, product: ProductCreate):
     Essa função insere um produto na tabela Products.
     """
     db_product = ProductModel(**product.model_dump())
-    db_product.add(db_product)
+    db.add(db_product)
     db.commit()
     db.refresh(db_product)
     
